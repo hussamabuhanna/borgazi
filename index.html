@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#18251e">
+  <meta name="description" content="Borgazi — an artist's world, coming soon.">
+  <title>Borgazi — Coming Into Being</title>
+
+  <style>
+    :root {
+      --forest: #18251e;
+      --forest-light: #26392d;
+      --cream: #eee6d4;
+      --gold: #c6a66b;
+      --muted: #aaa996;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--forest);
+      color: var(--cream);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .page {
+      min-height: 100svh;
+      padding: 28px 5vw 20px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .13;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+    }
+
+    header, footer {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .logo {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: .28em;
+    }
+
+    .header-note, footer {
+      color: var(--muted);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 6vw;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 55px 0;
+    }
+
+    .intro {
+      padding: 30px 0;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      letter-spacing: .3em;
+      line-height: 2;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: clamp(60px, 8vw, 112px);
+      line-height: .9;
+      font-weight: normal;
+      letter-spacing: -.065em;
+      margin: 0;
+    }
+
+    h1 span {
+      display: block;
+      margin-top: .14em;
+      color: var(--gold);
+      font-style: italic;
+      font-weight: normal;
+    }
+
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 34px 0 25px;
+      color: var(--gold);
+      font-size: 15px;
+    }
+
+    .ornament::before,
+    .ornament::after {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 38px;
+      background: var(--gold);
+      opacity: .6;
+    }
+
+    .message {
+      max-width: 360px;
+      color: #d0cebd;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .small-note {
+      margin-top: 32px;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .art-frame {
+      width: 100%;
+      max-width: 510px;
+      justify-self: center;
+      position: relative;
+      padding: 10px;
+      border: 1px solid #9b8153;
+      background: #202f25;
+    }
+
+    .art-frame::before {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border: 1px solid #8e784d;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .artwork {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .art-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 14px;
+      color: var(--gold);
+      font-family: Arial, sans-serif;
+      font-size: 8px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    footer {
+      padding-top: 18px;
+      border-top: 1px solid #435044;
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid #7d6b4c;
+      padding-bottom: 3px;
+    }
+
+    a:hover {
+      color: var(--cream);
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        padding: 23px 22px 18px;
+      }
+
+      header, footer {
+        font-size: 8px;
+        letter-spacing: .1em;
+      }
+
+      .logo {
+        font-size: 10px;
+      }
+
+      main {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 65px 0 45px;
+      }
+
+      .intro {
+        padding: 0;
+      }
+
+      h1 {
+        font-size: clamp(65px, 15vw, 95px);
+      }
+
+      .eyebrow {
+        margin-bottom: 24px;
+      }
+
+      .message {
+        font-size: 15px;
+      }
+
+      .art-frame {
+        width: 88%;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .intro, .art-frame {
+        animation: reveal 1.2s ease-out both;
+      }
+
+      .art-frame {
+        animation-delay: .2s;
+      }
+
+      @keyframes reveal {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">BORGAZI</div>
+      <div class="header-note">An independent artistic practice</div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="eyebrow">
+          Art · Imagination · Becoming
+        </div>
+
+        <h1>
+          A world
+          <span>unfolding.</span>
+        </h1>
+
+        <div class="ornament" aria-hidden="true">✳</div>
+
+        <p class="message">
+          Some things take shape in silence.
+
+          A new space for art, ideas, and everything
+          in between is slowly coming into being.
+          Until then, stay curious.
+        </p>
+
+        <div class="small-note">
+          The beginning of something new
+        </div>
+      </section>
+
+      <div>
+        <div class="art-frame">
+          <svg class="artwork"
+               viewBox="0 0 440 560"
+               xmlns="http://www.w3.org/2000/svg"
+               role="img"
+               aria-label="Original celestial botanical illustration">
+
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#354b37"/>
+                <stop offset="1" stop-color="#151f1a"/>
+              </linearGradient>
+
+              <radialGradient id="glow">
+                <stop offset="0" stop-color="#d8bc7d" stop-opacity=".35"/>
+                <stop offset="1" stop-color="#d8bc7d" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+
+            <rect width="440" height="560" fill="url(#sky)"/>
+            <circle cx="220" cy="230" r="180" fill="url(#glow)"/>
+
+            <!-- Celestial geometry -->
+            <circle cx="220" cy="230" r="122"
+                    fill="none" stroke="#c6a66b" stroke-width=".8"/>
+            <circle cx="220" cy="230" r="102"
+                    fill="none" stroke="#c6a66b" stroke-width=".5"
+                    stroke-dasharray="2 7"/>
+
+            <!-- Sun -->
+            <circle cx="220" cy="230" r="65"
+                    fill="#c6a66b" fill-opacity=".12"
+                    stroke="#d5b778" stroke-width="1"/>
+            <circle cx="220" cy="230" r="48"
+                    fill="none" stroke="#d5b778" stroke-width=".7"/>
+
+            <!-- Stars -->
+            <g fill="#e6d4a8">
+              <circle cx="80" cy="90" r="2"/>
+              <circle cx="340" cy="120" r="1.8"/>
+              <circle cx="350" cy="320" r="2"/>
+              <circle cx="90" cy="350" r="1.5"/>
+              <circle cx="160" cy="145" r="1.4"/>
+              <circle cx="300" cy="75" r="1.4"/>
+              <circle cx="120" cy="245" r="1.5"/>
+            </g>
+
+            <g stroke="#c6a66b" stroke-width=".8">
+              <path d="M80 80 V100 M70 90 H90"/>
+              <path d="M340 105 V125 M330 115 H350"/>
+              <path d="M350 305 V325 M340 315 H360"/>
+            </g>
+
+            <!-- Organic central stem -->
+            <path d="M220 500
+                     C190 415 260 370 220 300
+                     C190 245 240 195 220 165"
+                  fill="none" stroke="#d0b77f" stroke-width="2"/>
+
+            <!-- Leaves -->
+            <g fill="#71866a" stroke="#d0b77f" stroke-width="1">
+              <path d="M217 430
+                       C155 425 125 370 130 345
+                       C176 356 211 385 217 430Z"/>
+              <path d="M222 395
+                       C275 386 306 345 301 316
+                       C262 325 230 357 222 395Z"/>
+              <path d="M213 335
+                       C160 315 157 275 170 256
+                       C201 275 217 303 213 335Z"/>
+              <path d="M224 295
+                       C270 275 282 238 269 217
+                       C240 237 222 264 224 295Z"/>
+              <path d="M218 248
+                       C185 222 189 190 205 174
+                       C223 199 227 225 218 248Z"/>
+            </g>
+
+            <!-- Leaf veins -->
+            <g fill="none" stroke="#d7c69c" stroke-width=".65">
+              <path d="M215 425 L143 352"/>
+              <path d="M225 390 L295 323"/>
+              <path d="M212 330 L174 263"/>
+              <path d="M226 290 L266 224"/>
+            </g>
+
+            <!-- Ground -->
+            <path d="M55 475 Q220 435 385 475"
+                  fill="none" stroke="#c6a66b" stroke-width=".7"/>
+            <path d="M90 490 Q220 465 350 490"
+                  fill="none" stroke="#c6a66b" stroke-width=".5"/>
+
+            <text x="220" y="520"
+                  text-anchor="middle"
+                  fill="#d6c08d"
+                  font-size="9"
+                  letter-spacing="4">
+              ART IN THE MAKING
+            </text>
+          </svg>
+        </div>
+
+        <div class="art-caption">
+          <span>Borgazi studio</span>
+          <span>Work in progress · 001</span>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <span>Art is a way of seeing.</span>
+      <a href="https://www.instagram.com/borgazi/"
+         target="_blank"
+         rel="noopener noreferrer">
+        Follow the journey ↗
+      </a>
+    </footer>
+  </div>
+</body>
+</html>
