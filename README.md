@@ -1,20 +1,16 @@
-# Artist Portfolio Starter
+# Artist gallery website starter
 
-A responsive, single-page artist portfolio starter inspired by the feeling of an independent artist's personal website. It is not a reproduction of autumnskyeart.com.
+This is a responsive, single-page gallery template inspired by the broad structure and feel of the reference site: minimal header with slide-out navigation, centered introduction, a long-form sequence of artwork images with captions and occasional artist statements, plus About and Contact sections.
+
+It is an original implementation, not a pixel-perfect copy of the reference site's proprietary template, text, or artwork.
 
 ## Files
-- `index.html` — page content and structure
-- `styles.css` — layout, typography, responsive styling
-- `script.js` — mobile navigation and current year
+- `index.html` — page content
+- `styles.css` — layout and visual styling
+- `script.js` — slide-out menu behavior
 
-## Preview locally
-Open `index.html` in a browser. For local development, you can also use VS Code's Live Server extension.
+## Run
+Extract the ZIP and open `index.html` in a browser. Google Fonts and the sample Unsplash images require an internet connection.
 
-## Customize first
-1. Replace “ARTIST NAME” and “Artist Name”.
-2. Update the page title and description in `index.html`.
-3. Replace the sample images with images the artist owns or has permission to use.
-4. Change the project titles, categories, biography, and contact email.
-5. Adjust colors and fonts in `styles.css` under `:root`.
-
-The current images are remote Unsplash URLs used as temporary placeholders; an internet connection is needed to load them.
+## Customize
+Replace the artist name, sample images, captions, biography, and contact email with authorized content. Update image alt text to accurately describe each image. The current image URLs are placeholders and are not the reference artist's artwork.
