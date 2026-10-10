@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BORGAZI — Coming Soon</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cormorant Garamond & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        void: '#050505',
+                        obsidian: '#0a0a0a',
+                        ash: '#888888',
+                        bone: '#e0e0e0',
+                        accent: '#444444',
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Reset & Styling */
+        body {
+            background-color: #050505;
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Subtle Fade In Animation */
+        .fade-in {
+            animation: fadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Minimal Focus Input Line Transition */
+        .input-line {
+            transition: border-color 0.4s ease, color 0.4s ease;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen w-full flex flex-col justify-between p-8 sm:p-12 lg:p-16 select-none bg-void text-bone">
+
+    <!-- Subtle dust particle canvas -->
+    <canvas id="ambientCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-30"></canvas>
+
+    <div class="relative z-10 min-h-full flex flex-col justify-between flex-grow max-w-2xl mx-auto w-full fade-in">
+
+        <!-- Top Status Bar -->
+        <header class="flex items-center justify-between text-[11px] font-sans tracking-[0.25em] text-ash/60 uppercase">
+            <span>VISIONARY ART</span>
+            <span class="inline-block w-1 h-1 rounded-full bg-ash/40"></span>
+        </header>
+
+        <!-- Center Main Title & Coming Soon -->
+        <main class="my-auto py-20 text-center flex flex-col items-center justify-center space-y-8">
+            <!-- Artist Name -->
+            <h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl tracking-[0.2em] text-bone font-light uppercase pl-[0.2em]">
+                BORGAZI
+            </h1>
+
+            <!-- Simple Direct Status Message -->
+            <p class="font-sans text-xs sm:text-sm text-ash font-light tracking-[0.25em] uppercase">
+                Website coming soon
+            </p>
+        </main>
+
+        <!-- Footer Contact & Socials -->
+        <footer class="flex flex-col sm:flex-row items-center justify-between gap-4 font-sans text-[11px] tracking-[0.2em] text-ash/60 uppercase border-t border-white/5 pt-8">
+            <a href="mailto:contact@borgazi.com" class="hover:text-bone transition-colors">
+                contact@borgazi.com
+            </a>
+
+            <div class="flex items-center gap-6">
+                <a href="https://instagram.com/borgazi" target="_blank" rel="noopener noreferrer" class="hover:text-bone transition-colors">Instagram</a>
+                <a href="mailto:contact@borgazi.com" class="hover:text-bone transition-colors">Inquiries</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            lucide.createIcons();
+            initAmbientCanvas();
+        });
+
+        // Barely visible ambient particles canvas
+        let canvas, ctx, particles = [];
+
+        function initAmbientCanvas() {
+            canvas = document.getElementById('ambientCanvas');
+            ctx = canvas.getContext('2d');
+            resizeCanvas();
+
+            window.addEventListener('resize', resizeCanvas);
+
+            particles = [];
+            for (let i = 0; i < 25; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 1.0 + 0.2,
+                    alpha: Math.random() * 0.25 + 0.05,
+                    speedY: -(Math.random() * 0.12 + 0.02),
+                    speedX: (Math.random() - 0.5) * 0.08
+                });
+            }
+
+            renderParticles();
+        }
+
+        function resizeCanvas() {
+            if (!canvas) return;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function renderParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(p => {
+                p.y += p.speedY;
+                p.x += p.speedX;
+
+                if (p.y < -10) {
+                    p.y = canvas.height + 10;
+                    p.x = Math.random() * canvas.width;
+                }
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(224, 224, 224, ${p.alpha})`;
+                ctx.fill();
+            });
+
+            requestAnimationFrame(renderParticles);
+        }
+    </script>
+</body>
+</html>
