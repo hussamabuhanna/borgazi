@@ -4,207 +4,237 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#18251e">
-  <meta name="description" content="Borgazi — an artist's world, coming soon.">
-  <title>Borgazi — Coming Into Being</title>
+  <meta name="theme-color" content="#090a09">
+  <meta name="description" content="Borgazi — an exploration of art, consciousness, and the unseen.">
+  <title>BORGAZI — Beyond the Visible</title>
 
   <style>
     :root {
-      --forest: #18251e;
-      --forest-light: #26392d;
-      --cream: #eee6d4;
-      --gold: #c6a66b;
-      --muted: #aaa996;
+      --black: #090a09;
+      --surface: #111410;
+      --gold: #b6a077;
+      --cream: #e8e1d3;
+      --muted: #88877b;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      background: var(--black);
+    }
+
     body {
       margin: 0;
-      background: var(--forest);
+      background: var(--black);
       color: var(--cream);
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .page {
       min-height: 100svh;
-      padding: 28px 5vw 20px;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
+      padding: 28px 5vw 22px;
       position: relative;
+      overflow: hidden;
+      isolation: isolate;
     }
 
     .page::before {
       content: "";
       position: absolute;
       inset: 0;
+      z-index: -1;
       pointer-events: none;
-      opacity: .13;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+      background:
+        radial-gradient(
+          ellipse at 70% 45%,
+          rgba(104, 100, 68, .12),
+          transparent 48%
+        ),
+        linear-gradient(
+          120deg,
+          transparent 35%,
+          rgba(255, 255, 255, .015),
+          transparent 70%
+        );
     }
 
     header, footer {
-      position: relative;
-      z-index: 1;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      font-family: Arial, sans-serif;
+      position: relative;
+      z-index: 2;
       font-size: 9px;
       letter-spacing: .2em;
       text-transform: uppercase;
     }
 
     .logo {
-      color: var(--gold);
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: .28em;
+      color: var(--cream);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .35em;
     }
 
-    .header-note, footer {
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       color: var(--muted);
     }
 
+    .status::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(182, 160, 119, .6);
+    }
+
     main {
-      position: relative;
-      z-index: 1;
       flex: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 6vw;
       width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
+      max-width: 1500px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      align-items: center;
+      gap: 3vw;
       padding: 55px 0;
     }
 
-    .intro {
+    .content {
+      position: relative;
+      z-index: 1;
       padding: 30px 0;
     }
 
     .eyebrow {
       color: var(--gold);
-      font-family: Arial, sans-serif;
       font-size: 9px;
-      letter-spacing: .3em;
-      line-height: 2;
+      letter-spacing: .32em;
       text-transform: uppercase;
-      margin-bottom: 30px;
+      margin-bottom: 32px;
     }
 
     h1 {
-      font-size: clamp(60px, 8vw, 112px);
-      line-height: .9;
-      font-weight: normal;
-      letter-spacing: -.065em;
       margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(64px, 8.3vw, 118px);
+      font-weight: 400;
+      line-height: .88;
+      letter-spacing: -.075em;
     }
 
     h1 span {
       display: block;
-      margin-top: .14em;
       color: var(--gold);
       font-style: italic;
-      font-weight: normal;
+      font-weight: 400;
+      margin-top: .15em;
     }
 
-    .ornament {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin: 34px 0 25px;
-      color: var(--gold);
-      font-size: 15px;
-    }
-
-    .ornament::before,
-    .ornament::after {
-      content: "";
-      display: block;
+    .rule {
       height: 1px;
-      width: 38px;
+      width: 48px;
       background: var(--gold);
-      opacity: .6;
+      margin: 35px 0 25px;
+      opacity: .7;
     }
 
-    .message {
-      max-width: 360px;
-      color: #d0cebd;
-      font-size: 16px;
+    .description {
+      max-width: 300px;
+      color: #a5a397;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15px;
       line-height: 1.9;
     }
 
-    .small-note {
-      margin-top: 32px;
+    .signature {
+      margin-top: 35px;
       color: var(--muted);
-      font-family: Arial, sans-serif;
       font-size: 9px;
-      letter-spacing: .16em;
+      letter-spacing: .17em;
       text-transform: uppercase;
     }
 
-    .art-frame {
+    /* Original abstract celestial artwork */
+    .visual {
       width: 100%;
-      max-width: 510px;
+      max-width: 680px;
       justify-self: center;
       position: relative;
-      padding: 10px;
-      border: 1px solid #9b8153;
-      background: #202f25;
     }
 
-    .art-frame::before {
-      content: "";
-      position: absolute;
-      inset: 5px;
-      border: 1px solid #8e784d;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .artwork {
-      display: block;
+    .visual svg {
       width: 100%;
       height: auto;
+      display: block;
+      overflow: visible;
     }
 
-    .art-caption {
+    .orbit {
+      transform-origin: 250px 250px;
+      animation: rotate 90s linear infinite;
+    }
+
+    .glow {
+      animation: breathe 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes rotate {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes breathe {
+      from { opacity: .45; }
+      to { opacity: .9; }
+    }
+
+    .visual-caption {
       display: flex;
       justify-content: space-between;
-      gap: 10px;
-      margin-top: 14px;
-      color: var(--gold);
-      font-family: Arial, sans-serif;
+      gap: 12px;
+      padding: 0 5px;
+      color: #77776a;
       font-size: 8px;
-      letter-spacing: .16em;
+      letter-spacing: .2em;
       text-transform: uppercase;
     }
 
     footer {
-      padding-top: 18px;
-      border-top: 1px solid #435044;
+      border-top: 1px solid #292a24;
+      padding-top: 20px;
+      color: #77776a;
     }
 
-    a {
+    footer a {
+      transition: color .25s;
+    }
+
+    footer a:hover {
       color: var(--gold);
-      text-decoration: none;
-      border-bottom: 1px solid #7d6b4c;
-      padding-bottom: 3px;
     }
 
-    a:hover {
-      color: var(--cream);
+    .footer-right {
+      display: flex;
+      gap: 24px;
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 760px) {
       .page {
-        padding: 23px 22px 18px;
+        padding: 24px 22px 18px;
       }
 
       header, footer {
@@ -213,54 +243,56 @@
       }
 
       .logo {
-        font-size: 10px;
+        font-size: 11px;
+        letter-spacing: .25em;
       }
 
       main {
         grid-template-columns: 1fr;
-        gap: 36px;
-        padding: 65px 0 45px;
+        gap: 8px;
+        padding: 70px 0 45px;
       }
 
-      .intro {
+      .content {
         padding: 0;
       }
 
-      h1 {
-        font-size: clamp(65px, 15vw, 95px);
-      }
-
       .eyebrow {
-        margin-bottom: 24px;
+        margin-bottom: 26px;
       }
 
-      .message {
-        font-size: 15px;
+      h1 {
+        font-size: clamp(66px, 15vw, 100px);
       }
 
-      .art-frame {
-        width: 88%;
+      .rule {
+        margin: 25px 0 20px;
+      }
+
+      .description {
+        font-size: 14px;
+        max-width: 285px;
+      }
+
+      .signature {
+        margin-top: 22px;
+      }
+
+      .visual {
+        width: 100%;
+        max-width: 460px;
+        margin: 0 auto;
+      }
+
+      .footer-right {
+        gap: 12px;
       }
     }
 
-    @media (prefers-reduced-motion: no-preference) {
-      .intro, .art-frame {
-        animation: reveal 1.2s ease-out both;
-      }
-
-      .art-frame {
-        animation-delay: .2s;
-      }
-
-      @keyframes reveal {
-        from {
-          opacity: 0;
-          transform: translateY(14px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
       }
     }
   </style>
@@ -269,154 +301,174 @@
 <body>
   <div class="page">
     <header>
-      <div class="logo">BORGAZI</div>
-      <div class="header-note">An independent artistic practice</div>
+      <a class="logo" href="#" aria-label="Borgazi home">BORGAZI</a>
+      <div class="status">Something is emerging</div>
     </header>
 
     <main>
-      <section class="intro">
-        <div class="eyebrow">
-          Art · Imagination · Becoming
-        </div>
+      <section class="content">
+        <div class="eyebrow">Art · Consciousness · The unseen</div>
 
         <h1>
-          A world
-          <span>unfolding.</span>
+          Beyond
+          <span>the visible.</span>
         </h1>
 
-        <div class="ornament" aria-hidden="true">✳</div>
+        <div class="rule"></div>
 
-        <p class="message">
-          Some things take shape in silence.
-
-          A new space for art, ideas, and everything
-          in between is slowly coming into being.
-          Until then, stay curious.
+        <p class="description">
+          An exploration of the spaces between reality
+          and imagination. A new body of work is
+          slowly finding its form.
         </p>
 
-        <div class="small-note">
-          The beginning of something new
-        </div>
+        <div class="signature">The beginning is near</div>
       </section>
 
-      <div>
-        <div class="art-frame">
-          <svg class="artwork"
-               viewBox="0 0 440 560"
-               xmlns="http://www.w3.org/2000/svg"
-               role="img"
-               aria-label="Original celestial botanical illustration">
+      <div class="visual">
+        <svg viewBox="0 0 500 540"
+             xmlns="http://www.w3.org/2000/svg"
+             role="img"
+             aria-label="Abstract golden eclipse surrounded by celestial geometry">
 
-            <defs>
-              <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#354b37"/>
-                <stop offset="1" stop-color="#151f1a"/>
-              </linearGradient>
+          <defs>
+            <radialGradient id="aura">
+              <stop offset="0" stop-color="#b6a077" stop-opacity=".25"/>
+              <stop offset=".55" stop-color="#8e8059" stop-opacity=".08"/>
+              <stop offset="1" stop-color="#090a09" stop-opacity="0"/>
+            </radialGradient>
 
-              <radialGradient id="glow">
-                <stop offset="0" stop-color="#d8bc7d" stop-opacity=".35"/>
-                <stop offset="1" stop-color="#d8bc7d" stop-opacity="0"/>
-              </radialGradient>
-            </defs>
+            <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#4a4a3b"/>
+              <stop offset=".5" stop-color="#20231d"/>
+              <stop offset="1" stop-color="#10120f"/>
+            </linearGradient>
 
-            <rect width="440" height="560" fill="url(#sky)"/>
-            <circle cx="220" cy="230" r="180" fill="url(#glow)"/>
+            <linearGradient id="goldline" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#e0cc9e"/>
+              <stop offset="1" stop-color="#7e704d"/>
+            </linearGradient>
 
-            <!-- Celestial geometry -->
-            <circle cx="220" cy="230" r="122"
-                    fill="none" stroke="#c6a66b" stroke-width=".8"/>
-            <circle cx="220" cy="230" r="102"
-                    fill="none" stroke="#c6a66b" stroke-width=".5"
-                    stroke-dasharray="2 7"/>
+            <filter id="blur">
+              <feGaussianBlur stdDeviation="20"/>
+            </filter>
+          </defs>
 
-            <!-- Sun -->
-            <circle cx="220" cy="230" r="65"
-                    fill="#c6a66b" fill-opacity=".12"
-                    stroke="#d5b778" stroke-width="1"/>
-            <circle cx="220" cy="230" r="48"
-                    fill="none" stroke="#d5b778" stroke-width=".7"/>
+          <rect width="500" height="540" fill="transparent"/>
 
-            <!-- Stars -->
-            <g fill="#e6d4a8">
-              <circle cx="80" cy="90" r="2"/>
-              <circle cx="340" cy="120" r="1.8"/>
-              <circle cx="350" cy="320" r="2"/>
-              <circle cx="90" cy="350" r="1.5"/>
-              <circle cx="160" cy="145" r="1.4"/>
-              <circle cx="300" cy="75" r="1.4"/>
-              <circle cx="120" cy="245" r="1.5"/>
-            </g>
+          <circle class="glow" cx="250" cy="245" r="190"
+                  fill="url(#aura)"/>
 
-            <g stroke="#c6a66b" stroke-width=".8">
-              <path d="M80 80 V100 M70 90 H90"/>
-              <path d="M340 105 V125 M330 115 H350"/>
-              <path d="M350 305 V325 M340 315 H360"/>
-            </g>
+          <circle cx="250" cy="245" r="138"
+                  fill="none" stroke="#8f815d"
+                  stroke-width=".6" opacity=".5"/>
 
-            <!-- Organic central stem -->
-            <path d="M220 500
-                     C190 415 260 370 220 300
-                     C190 245 240 195 220 165"
-                  fill="none" stroke="#d0b77f" stroke-width="2"/>
+          <circle cx="250" cy="245" r="160"
+                  fill="none" stroke="#6d644b"
+                  stroke-width=".5" stroke-dasharray="1 7"/>
 
-            <!-- Leaves -->
-            <g fill="#71866a" stroke="#d0b77f" stroke-width="1">
-              <path d="M217 430
-                       C155 425 125 370 130 345
-                       C176 356 211 385 217 430Z"/>
-              <path d="M222 395
-                       C275 386 306 345 301 316
-                       C262 325 230 357 222 395Z"/>
-              <path d="M213 335
-                       C160 315 157 275 170 256
-                       C201 275 217 303 213 335Z"/>
-              <path d="M224 295
-                       C270 275 282 238 269 217
-                       C240 237 222 264 224 295Z"/>
-              <path d="M218 248
-                       C185 222 189 190 205 174
-                       C223 199 227 225 218 248Z"/>
-            </g>
+          <g class="orbit" fill="none" stroke="url(#goldline)">
+            <ellipse cx="250" cy="245" rx="100" ry="158"
+                     stroke-width=".8" transform="rotate(35 250 245)"/>
+            <ellipse cx="250" cy="245" rx="100" ry="158"
+                     stroke-width=".8" transform="rotate(-35 250 245)"/>
+          </g>
 
-            <!-- Leaf veins -->
-            <g fill="none" stroke="#d7c69c" stroke-width=".65">
-              <path d="M215 425 L143 352"/>
-              <path d="M225 390 L295 323"/>
-              <path d="M212 330 L174 263"/>
-              <path d="M226 290 L266 224"/>
-            </g>
+          <!-- Eclipse -->
+          <circle cx="250" cy="205" r="75"
+                  fill="#b6a077" opacity=".08"
+                  filter="url(#blur)"/>
 
-            <!-- Ground -->
-            <path d="M55 475 Q220 435 385 475"
-                  fill="none" stroke="#c6a66b" stroke-width=".7"/>
-            <path d="M90 490 Q220 465 350 490"
-                  fill="none" stroke="#c6a66b" stroke-width=".5"/>
+          <circle cx="250" cy="205" r="67"
+                  fill="none" stroke="#c6b181"
+                  stroke-width="1.1"/>
 
-            <text x="220" y="520"
-                  text-anchor="middle"
-                  fill="#d6c08d"
-                  font-size="9"
-                  letter-spacing="4">
-              ART IN THE MAKING
-            </text>
-          </svg>
-        </div>
+          <circle cx="250" cy="205" r="55"
+                  fill="#090a09" stroke="#7e704d"
+                  stroke-width=".6"/>
 
-        <div class="art-caption">
-          <span>Borgazi studio</span>
-          <span>Work in progress · 001</span>
+          <path d="M197 177
+                   A61 61 0 0 1 303 177"
+                fill="none" stroke="#d3bf90"
+                stroke-width="1.5"/>
+
+          <circle cx="250" cy="205" r="3"
+                  fill="#d3bf90"/>
+
+          <!-- Geometric rays -->
+          <g stroke="#9c8a61" stroke-width=".7" opacity=".7">
+            <path d="M250 105 V77"/>
+            <path d="M250 305 V337"/>
+            <path d="M150 205 H118"/>
+            <path d="M350 205 H382"/>
+            <path d="M179 134 L158 113"/>
+            <path d="M321 134 L342 113"/>
+            <path d="M179 276 L158 297"/>
+            <path d="M321 276 L342 297"/>
+          </g>
+
+          <!-- Abstract monolith -->
+          <path d="M181 465 L208 333 L274 319 L316 465 Z"
+                fill="url(#stone)"
+                stroke="#8b7c58" stroke-width=".8"/>
+
+          <path d="M208 333 L250 357 L274 319"
+                fill="none" stroke="#b6a077"
+                stroke-width=".7" opacity=".65"/>
+
+          <path d="M250 357 L250 451"
+                stroke="#b6a077" stroke-width=".7" opacity=".4"/>
+
+          <path d="M166 465 H332"
+                stroke="#8b7c58" stroke-width=".7"/>
+
+          <!-- Small stars -->
+          <g fill="#c6b181">
+            <circle cx="109" cy="171" r="1.3"/>
+            <circle cx="375" cy="159" r="1.2"/>
+            <circle cx="352" cy="351" r="1.4"/>
+            <circle cx="132" cy="365" r="1"/>
+            <circle cx="310" cy="86" r="1"/>
+            <circle cx="185" cy="80" r="1.2"/>
+          </g>
+
+          <g stroke="#9c8a61" stroke-width=".6">
+            <path d="M109 165 V177 M103 171 H115"/>
+            <path d="M375 153 V165 M369 159 H381"/>
+            <path d="M352 345 V357 M346 351 H358"/>
+          </g>
+
+          <text x="250" y="507"
+                text-anchor="middle"
+                fill="#89816d"
+                font-family="Arial, sans-serif"
+                font-size="8"
+                letter-spacing="4">
+            BETWEEN WORLDS
+          </text>
+        </svg>
+
+        <div class="visual-caption">
+          <span>Study 001</span>
+          <span>Beyond form</span>
         </div>
       </div>
     </main>
 
     <footer>
-      <span>Art is a way of seeing.</span>
-      <a href="https://www.instagram.com/borgazi/"
-         target="_blank"
-         rel="noopener noreferrer">
-        Follow the journey ↗
-      </a>
+      <span>Independent artistic practice</span>
+      <div class="footer-right">
+        <a href="https://www.instagram.com/borgazi/"
+           target="_blank"
+           rel="noopener noreferrer">Instagram ↗</a>
+        <span>© <span id="year"></span> Borgazi</span>
+      </div>
     </footer>
   </div>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
 </body>
 </html>
