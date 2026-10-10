@@ -1,95 +1,144 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A gallery of original artwork and reflections.">
-  <title>Artist Name — Gallery</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Contemporary Art</title>
+  <meta
+    name="description"
+    content="Original contemporary paintings exploring nature, imagination, and human connection."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <header class="topbar">
-    <a class="brand" href="#top">ARTIST NAME</a>
-    <button class="menu-button" aria-expanded="false" aria-controls="menu-panel"><span class="menu-label">Menu</span><span class="menu-icon">☰</span></button>
+  <header class="site-header">
+    <a class="brand" href="#top">YOUR NAME</a>
+
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="#gallery">Gallery</a>
+      <a href="#statement">Statement</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <nav id="menu-panel" class="menu-panel" aria-label="Main navigation">
-    <button class="close-menu" aria-label="Close menu">×</button>
-    <a href="#gallery">Gallery</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-    <a href="#links">Links</a>
-  </nav>
-  <div class="scrim"></div>
-
   <main id="top">
-    <section class="intro">
-      <p class="eyebrow">ORIGINAL ARTWORK · MADE BY HAND</p>
-      <h1>Art inspired by the natural world, the human experience, and the mystery in between.</h1>
-      <p class="intro-note">A living collection of paintings, ideas, and stories.</p>
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">Original paintings &amp; fine art</p>
+        <h1>
+          Contemporary artwork inspired by nature,<br />
+          imagination, and the human spirit.
+        </h1>
+        <p class="hero-sub">
+          Handcrafted acrylic and oil paintings created in small batches.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#gallery">View gallery</a>
+          <a class="button ghost" href="#contact">Commission a piece</a>
+        </div>
+      </div>
     </section>
 
-    <section id="gallery" class="gallery" aria-label="Selected artwork">
-      <article class="artwork artwork-feature">
-        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1800&q=85" alt="Framed artwork in a gallery">
-        <div class="artwork-caption"><h2>“The First Light”</h2><p>Mixed media on canvas · 2025</p></div>
-      </article>
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Acrylic</span><span>•</span>
+        <span>Oil</span><span>•</span>
+        <span>Canvas</span><span>•</span>
+        <span>Original Art</span><span>•</span>
+        <span>Commissions</span><span>•</span>
+        <span>Nature</span><span>•</span>
+      </div>
+    </section>
 
-      <div class="artist-statement">
-        <p>Every form carries a story. Every colour holds a feeling. This collection explores the connections between inner worlds and the world that surrounds us.</p>
+    <section class="gallery" id="gallery">
+      <div class="section-heading">
+        <p class="eyebrow">Selected work</p>
+        <h2>Gallery</h2>
+        <p>
+          A collection of original paintings. Click any piece to view its
+          details.
+        </p>
       </div>
 
-      <article class="artwork">
-        <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1500&q=85" alt="Vivid abstract painting">
-        <div class="artwork-caption"><h2>“A Thousand Small Suns”</h2><p>Acrylic on canvas · 2025</p></div>
-      </article>
+      <div class="art-grid">
+        <article class="art-card">
+          <button
+            class="art-button"
+            data-title="Morning Current"
+            data-medium="Acrylic on canvas"
+            data-size="30 × 40 in"
+            data-year="2026"
+            data-description="An original painting exploring movement, light, and the quiet rhythms of water."
+          >
+            <img src="images/artwork-1.jpg" alt="Placeholder painting titled Morning Current" />
+          </button>
+          <div class="art-meta">
+            <h3>Morning Current</h3>
+            <p>Acrylic on canvas · 30 × 40 in · 2026</p>
+          </div>
+        </article>
 
-      <article class="artwork artwork-narrow">
-        <img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1300&q=85" alt="Expressive contemporary artwork">
-        <div class="artwork-caption"><h2>“The Witness”</h2><p>Oil and pigment · 2024</p></div>
-      </article>
+        <article class="art-card">
+          <button
+            class="art-button"
+            data-title="Rooted Sky"
+            data-medium="Oil and gold leaf on panel"
+            data-size="24 × 36 in"
+            data-year="2025"
+            data-description="A contemplative work about connection between earth, sky, and inner life."
+          >
+            <img src="images/artwork-2.jpg" alt="Placeholder painting titled Rooted Sky" />
+          </button>
+          <div class="art-meta">
+            <h3>Rooted Sky</h3>
+            <p>Oil and gold leaf on panel · 24 × 36 in · 2025</p>
+          </div>
+        </article>
 
-      <div class="artist-statement statement-wide">
-        <p>We are part of a much larger tapestry: soil and starlight, memory and possibility, growth and change. The work is an invitation to pause, look closer, and find your own meaning.</p>
+        <article class="art-card">
+          <button
+            class="art-button"
+            data-title="Becoming Light"
+            data-medium="Acrylic on canvas"
+            data-size="18 × 24 in"
+            data-year="2025"
+            data-description="A vibrant exploration of transformation, growth, and personal renewal."
+          >
+            <img src="images/artwork-3.jpg" alt="Placeholder painting titled Becoming Light" />
+          </button>
+          <div class="art-meta">
+            <h3>Becoming Light</h3>
+            <p>Acrylic on canvas · 18 × 24 in · 2025</p>
+          </div>
+        </article>
       </div>
-
-      <article class="artwork">
-        <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=1600&q=85" alt="Artwork with rich colours and textures">
-        <div class="artwork-caption"><h2>“The Garden Within”</h2><p>Mixed media on panel · 2024</p></div>
-      </article>
-
-      <article class="artwork artwork-narrow">
-        <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1300&q=85" alt="Art studio and creative materials">
-        <div class="artwork-caption"><h2>“Becoming”</h2><p>Studio study · 2023</p></div>
-      </article>
-
-      <article class="artwork">
-        <img src="https://images.unsplash.com/photo-1577083288073-40892c0860a4?auto=format&fit=crop&w=1600&q=85" alt="Abstract art in a gallery">
-        <div class="artwork-caption"><h2>“A Quiet Kind of Wonder”</h2><p>Acrylic on canvas · 2023</p></div>
-      </article>
     </section>
 
-    <section id="about" class="about">
-      <p class="eyebrow">ABOUT THE ARTIST</p>
-      <h2>A practice rooted in curiosity.</h2>
-      <p>Use this space for a short, personal biography: the artist’s background, materials, influences, and the questions that guide the work.</p>
-    </section>
-
-    <section id="contact" class="contact">
-      <p class="eyebrow">CONNECT</p>
-      <h2>For commissions, collaborations, or a simple hello.</h2>
-      <a href="mailto:hello@example.com">hello@example.com ↗</a>
-    </section>
-  </main>
-
-  <footer id="links">
-    <span>© <span id="year"></span> Artist Name</span>
-    <span>All artwork and text should be replaced with the artist’s own material.</span>
-    <a href="#top">Back to top ↑</a>
-  </footer>
-  <script src="script.js"></script>
-</body>
-</html>
+    <section class="statement" id="statement">
+      <div class="statement-inner">
+        <p class="eyebrow">Artist statement</p>
+        <h2>Art as a way of listening</h2>
+        <p>
+          My work begins with observation: the shifting light of a forest, the
+          texture of stone, the emotional weather of a moment. Through layered
+          color and symbolic imagery, I explore the relationships between
+          people, nature, memory, and imagination.
+        </p>
+        <p>
+          Each painting is made slowly by hand, allowing space for intuition,
+          accident, and revision. I hope the finished work invites viewers into
+          a moment of

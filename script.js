@@ -1,16 +1,44 @@
-const menuButton = document.querySelector(".menu-button");
-const menuPanel = document.querySelector(".menu-panel");
-const closeButton = document.querySelector(".close-menu");
-const scrim = document.querySelector(".scrim");
+const navToggle = document.querySelector(".nav-toggle");
+const siteNav = document.querySelector(".site-nav");
 
-function setMenu(open) {
-  menuPanel.classList.toggle("open", open);
-  scrim.classList.toggle("visible", open);
-  menuButton.setAttribute("aria-expanded", String(open));
-  document.body.style.overflow = open ? "hidden" : "";
+navToggle.addEventListener("click", () => {
+  const isOpen = siteNav.classList.toggle("open");
+  navToggle.setAttribute("aria-expanded", isOpen);
+});
+
+siteNav.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    siteNav.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+  });
+});
+
+const modal = document.getElementById("artModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalMedium = document.querySelector(".modal-medium");
+const modalDescription = document.querySelector(".modal-description");
+
+document.querySelectorAll(".art-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    modalTitle.textContent = button.dataset.title;
+    modalMedium.textContent = `${button.dataset.medium} · ${button.dataset.size} · ${button.dataset.year}`;
+    modalDescription.textContent = button.dataset.description;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+  });
+});
+
+function closeModal() {
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
 }
-menuButton.addEventListener("click", () => setMenu(!menuPanel.classList.contains("open")));
-closeButton.addEventListener("click", () => setMenu(false));
-scrim.addEventListener("click", () => setMenu(false));
-menuPanel.querySelectorAll("a").forEach(link => link.addEventListener("click", () => setMenu(false)));
-document.querySelector("#year").textContent = new Date().getFullYear();
+
+modal.querySelectorAll("[data-close]").forEach((element) => {
+  element.addEventListener("click", closeModal);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeModal();
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
