@@ -1,16 +1,24 @@
-# Artist gallery website starter
+# Borgazi ART
 
-This is a responsive, single-page gallery template inspired by the broad structure and feel of the reference site: minimal header with slide-out navigation, centered introduction, a long-form sequence of artwork images with captions and occasional artist statements, plus About and Contact sections.
+A static artist website for [borgazi.art](https://borgazi.art), modelled on the structure of a long-scroll painter’s site: dark ground, script wordmark, wrapping navigation, hero portrait, italic tagline, vertical gallery with captions, and inner pages for shop, originals, media, courses, events, about, FAQ, contact, and links.
 
-It is an original implementation, not a pixel-perfect copy of the reference site's proprietary template, text, or artwork.
+This is an original template. It does not copy proprietary Squarespace CSS, the reference artist’s paintings, or their writing.
 
 ## Files
-- `index.html` — page content
-- `styles.css` — layout and visual styling
-- `script.js` — slide-out menu behavior
+- `index.html` — gallery home
+- `about.html`, `shop.html`, `originals.html`, `media.html`, `courses.html`, `events.html`, `faq.html`, `contact.html`, `links.html`
+- `styles.css` — layout
+- `site.js` — header, mobile menu, newsletter
+- `gallery.js` — artwork list and lightbox (prev / next)
 
 ## Run
-Extract the ZIP and open `index.html` in a browser. Google Fonts and the sample Unsplash images require an internet connection.
+Open `index.html` in a browser, or serve the folder:
+
+```
+python -m http.server 8080
+```
+
+Google Fonts and Unsplash placeholders need a network connection.
 
 ## Customize
-Replace the artist name, sample images, captions, biography, and contact email with authorized content. Update image alt text to accurately describe each image. The current image URLs are placeholders and are not the reference artist's artwork.
+Replace the name, emails, biography, FAQ, and images with the artist’s own material. Edit `ARTWORKS` in `gallery.js` for the gallery. Point shop cards at a real store when ready.
